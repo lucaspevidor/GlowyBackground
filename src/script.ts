@@ -1,10 +1,11 @@
-import { Vector } from "vector2d";
-import { CanvasManager } from "./Canvas/CanvasManager";
+import { CanvasAnimation } from "./Canvas/CanvasAnimation";
 
 const canvasElement = document.getElementById("bg-canvas") as HTMLCanvasElement;
 const rootDiv = document.getElementsByTagName("body").item(0);
 if (!rootDiv) throw new Error("Rootdiv not found");
 
-const cm = new CanvasManager(canvasElement, rootDiv);
+const colorList = ["#ff124f", "#ff00a0", "#fe75fe", "#7a04eb", "#120458"];
 
-cm.drawer.DrawCircle(new Vector(50, 50), 10, "pink");
+const animation = new CanvasAnimation(canvasElement, rootDiv, 50, colorList);
+
+requestAnimationFrame((ts) => animation.UpdateFrame(ts, animation));
