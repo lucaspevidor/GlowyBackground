@@ -1,11 +1,10 @@
+import { Vector } from "vector2d";
+import { CanvasManager } from "./Canvas/CanvasManager";
+
 const canvasElement = document.getElementById("bg-canvas") as HTMLCanvasElement;
-const c = canvasElement.getContext("2d") as CanvasRenderingContext2D;
-
 const rootDiv = document.getElementsByTagName("body").item(0);
+if (!rootDiv) throw new Error("Rootdiv not found");
 
-if (rootDiv) {
-  canvasElement.width = rootDiv.clientWidth;
-  canvasElement.height = rootDiv.clientHeight;
-}
+const cm = new CanvasManager(canvasElement, rootDiv);
 
-console.log({ w: canvasElement.width, h: canvasElement.height });
+cm.drawer.DrawCircle(new Vector(50, 50), 10, "pink");
