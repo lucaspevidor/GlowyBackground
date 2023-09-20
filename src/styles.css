@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+#bg-canvas {
+  background-color: #131415;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
