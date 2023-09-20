@@ -26,6 +26,17 @@ export class CanvasAnimation {
     );
 
     this.rm.Generate(nObjects, canvas, colorList);
+
+    window.addEventListener("resize", () => {
+      this.UpdateRMBounds(this.rm, this.cm);
+    });
+  }
+
+  private UpdateRMBounds(rm: RBManager, cm: CanvasManager) {
+    rm.tlBounds.x = -50;
+    rm.tlBounds.y = 0;
+    rm.brBounds.x = cm.canvas.width + 50;
+    rm.brBounds.y = cm.canvas.height + 50;
   }
 
   private DrawItems() {
