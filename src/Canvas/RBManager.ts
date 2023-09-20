@@ -44,7 +44,6 @@ export class RBManager {
       rb.position = rb.position.add(rb.velocity.clone().mulS(dt));
 
       // Velocity update;
-      console.log(rForce.magnitude());
       rb.velocity = rb.velocity.add(rForce.divS(rb.mass));
       if (rb.velocity.magnitude() > this.maxV) {
         rb.velocity = rb.velocity.unit().mulS(this.maxV);
@@ -64,5 +63,34 @@ export class RBManager {
         rb.velocity.y = -rb.velocity.y;
       }
     });
+  }
+
+  public Generate(n: number, canvas: HTMLCanvasElement, colors: string[]) {
+    const { width, height } = canvas;
+
+    if (colors.length === 0) throw new Error("Invalid color array");
+    let colorCounter = 0;
+
+    for (let i = 0; i < n; i++) {
+      const obj: RigidBody = {
+        type: {
+          radius: 30 + Math.random() * 0.15 * Math.min(width, height),
+          color: colors[colorCounter],
+        },
+        mass: (Math.random() * 3) / (n / 1.5),
+        velocity: new Vector(
+          Math.random() * 250 + 30 * Math.sign(Math.random() - 0.5),
+          Math.random() * 250 + 30 * Math.sign(Math.random() - 0.5)
+        ),
+        position: new Vector(Math.random() * width, Math.random() * height),
+      };
+
+      colorCounter++;
+      if (colorCounter >= colors.length) {
+        colorCounter = 0;
+      }
+
+      this.AddRB(obj);
+    }
   }
 }
