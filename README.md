@@ -2,6 +2,8 @@
 
 A mesmerizing single-page web app showcasing an animated background with glowing circles.
 
+https://github.com/lucaspevidor/GlowyBackground/assets/43662130/76f25838-374f-4713-a48a-41de05db1200
+
 ## Overview
 
 This project utilizes ParcelJS for bundling and deploys an HTML canvas animation with glowing circles flowing behind. It offers a visually captivating experience.
