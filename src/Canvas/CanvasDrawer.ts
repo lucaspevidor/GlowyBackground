@@ -8,9 +8,13 @@ class CanvasDrawer {
     const { c } = this.cm;
 
     c.fillStyle = color;
-    c.beginPath;
+    c.beginPath();
     c.ellipse(position.x, position.y, radius, radius, 0, 0, 2 * Math.PI);
     c.fill();
+  }
+
+  ClearCanvas() {
+    this.cm.c.clearRect(0, 0, this.cm.canvas.width, this.cm.canvas.height);
   }
 }
 
